@@ -1,0 +1,24 @@
+@timesnewroman: "Times New Roman", Times, Serif;
+@helvetica: "Helvetica Neue", Helvetica, Arial;
+@georgia: Georgia, Times, "Times New Roman";
+
+.container {
+    min-height: 100vh;
+    padding: 0px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    max-width: 1440px;
+    width: 100%;
+    padding: 20px 20px;
+
+    hr {
+        width: 80%;
+        height: 1px;
+        background-color: #c8c8c8;
+    }
+}

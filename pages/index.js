@@ -1,8 +1,5 @@
-import Col from 'react-bootstrap/col';
-import Nav from 'react-bootstrap/nav';
-import Navbar from 'react-bootstrap/Navbar';
-import Row from 'react-bootstrap/row';
-import Tab from 'react-bootstrap/tab';
+import {Col, Nav, Navbar, Row, Tab} from 'react-bootstrap';
+
 import Safe from 'react-safe';
 
 import Page from '../components/base_page';

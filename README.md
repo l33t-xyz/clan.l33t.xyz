@@ -1,2 +1,4 @@
 # clan.l33t.xyz
-clan.l33t.xyz hosted on GitHub pages
+
+NextJS-based frontend app for gaming clan pages hosted on l33t.xyz
+

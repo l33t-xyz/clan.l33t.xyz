@@ -1,5 +1,4 @@
 import {Col, Nav, Navbar, Row, Tab} from 'react-bootstrap';
-
 import Safe from 'react-safe';
 
 import Page from '../components/base_page';
@@ -50,22 +49,36 @@ export default function IndexPage({ site }) {
 }
 
 export async function getServerSideProps(context) {
-    const res = await fetch(`https://l33t.xyz/api/clans/amazon/public`);
-    const data = await res.json();
-
-    if (!data) {
-        return {
-            notFound: true,
-        };
-    }
-
-    for (let i = 0; i < data.public_pages.length; ++i) {
-        const page = data.public_pages[i];
-        const html = await markdownToHtml(page.content || '');
-        page.html = html;
-    }
-
-    return {
-        props: { site: data },
+    let result = null;
+    const defaultResult = {
+        notFound: true
     };
+
+    const hostname = context.req.headers.host;
+    const match = hostname.match(/^(?<clanName>[a-z]+)\.clan.l33t.xyz$/);
+
+    if (match) {
+        const clanName = match.groups.clanName;
+        const res = await fetch(`https://l33t.xyz/api/clans/${clanName}/public`);
+        const data = await res.json();
+
+        if (!data || !data.success) {
+            result = defaultResult;
+        } else {
+            const site = data.site;
+
+            for (let i = 0; i < site.public_pages.length; ++i) {
+                const page = site.public_pages[i];
+                const html = await markdownToHtml(page.content || '');
+                page.html = html;
+            }
+            result = {
+                props: { site: site },
+            };
+        }
+    } else {
+        result = defaultResult;
+    }
+
+    return result;
 }

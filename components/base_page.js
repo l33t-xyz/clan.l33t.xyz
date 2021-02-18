@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import React from 'react';
 
 import Header from '../components/header';
 import Footer from '../components/footer';
@@ -9,25 +10,41 @@ import NonBlockingJS from '../components/js/nonblocking';
 import css from '../styles/common.module.scss';
 import utilsCss from '../styles/utils.module.scss';
 
-export default function Page({ children, ...props }) {
-    return (
-        <div className={css.container}>
-            <Head>
-                <title>{props.site.name}</title>
+function BasePage(WrappedComponent) {
+    return class extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                site: props.site,
+            };
+        }
 
-                <meta charSet="utf-8" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-                />
+        render() {
+            const site = this.props.site;
+            return (
+                <div className={css.container}>
+                    <Head>
+                        <title>{site.name}</title>
 
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-            <CommonCSS />
-            <CommonJS />
-            <main className={css.main}>{children}</main>
-            <Footer {...props} />
-            <NonBlockingJS />
-        </div>
-    );
+                        <meta charSet="utf-8" />
+                        <meta
+                            name="viewport"
+                            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+                        />
+
+                        <link rel="icon" href="/favicon.ico" />
+                    </Head>
+                    <CommonCSS />
+                    <CommonJS />
+                    <main className={css.main}>
+                        <WrappedComponent page={this} />
+                    </main>
+                    <Footer site={site} />
+                    <NonBlockingJS />
+                </div>
+            );
+        }
+    };
 }
+
+export default BasePage;

@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2020 l33t.xyz
+Copyright (c) 2020-2021 l33t.xyz
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

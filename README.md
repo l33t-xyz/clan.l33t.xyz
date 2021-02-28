@@ -15,7 +15,9 @@ To develop locally, perform the following steps:
 
 1. `git clone`
 1. `yarn install` and `yarn run dev`
-1. Modify local hosts file (`/etc/hosts`) and point `yourclan.clan.l33t.xyz` to `127.0.0.1`
+1. Two options, one involving editing the hosts file, one not:
+  1. Modify hosts file (i.e. `/etc/hosts`) and point `yourclan.clan.l33t.xyz` to `127.0.0.1`, then, in your browser, navigate to `http://<yourclan>.clan.l33t.xyz:3000`
+  1. Alternately, without editing the hosts file, in your browser, navigate to `http://localhost:3000/<yourclan>`. However, with this method, not all routing may work correctly
 
 # License
 

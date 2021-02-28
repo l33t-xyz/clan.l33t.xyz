@@ -3,7 +3,7 @@ import ClanPage from '../components/clan_page';
 
 import { getClanPageServerSideProps } from '../utils/clan';
 
-class IndexPage extends React.Component {
+class LocalClanPage extends React.Component {
     render() {
         return <ClanPage page={this.props.page} />;
     }
@@ -14,4 +14,4 @@ export async function getServerSideProps(context) {
     return result;
 }
 
-export default BasePage(IndexPage);
+export default BasePage(LocalClanPage);

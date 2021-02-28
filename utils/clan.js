@@ -32,7 +32,7 @@ export function getClanFromHostnameOrPath(hostname, path) {
     const localHostnameMatch = hostname.match(/^localhost:\d+$/);
 
     if (clanHostnameMatch) {
-        clanName = match.groups.clanName;
+        clanName = clanHostnameMatch.groups.clanName;
     } else if (localHostnameMatch) {
         const pathParts = path.split('/');
         clanName = pathParts[1];

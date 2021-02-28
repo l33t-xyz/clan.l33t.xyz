@@ -1,9 +1,10 @@
-import { Col, Nav, Navbar, Row, Tab } from 'react-bootstrap';
+import { Col, Nav, Navbar, Row, Tab, Jumbotron } from 'react-bootstrap';
 import Safe from 'react-safe';
 
 import BasePage from './base_page';
 
 import css from '../styles/common.module.scss';
+import clanPageCss from '../styles/clan.module.scss';
 
 import { getClanPageServerSideProps } from '../utils/clan';
 
@@ -34,10 +35,32 @@ class ClanPage extends React.Component {
         });
 
         const tabPanesJSX = site.public_pages.map((page, index) => {
+            const attachments = page.attachments;
+            let heroImage = null;
+            if (attachments.length > 0) {
+                heroImage = attachments[0].thumbnails.large.url;
+            }
+
+            const heroStyle = {};
+            if (heroImage) {
+                heroStyle.backgroundImage = `url(${heroImage})`;
+                heroStyle.backgroundRepeat = 'no-repeat';
+                heroStyle.attachment = 'fixed';
+                heroStyle.backgroundPosition = 'center';
+                heroStyle.backgroundSize = 'cover';
+            }
             return (
                 <Tab.Pane eventKey={page.slug} key={page.slug}>
-                    <h1>{page.title}</h1>
-                    <Safe.div>{page.html}</Safe.div>
+                    <Jumbotron
+                        fluid
+                        className={clanPageCss.jumbotron}
+                        style={heroStyle}
+                    >
+                        <h1 className={clanPageCss.pageTitle}>{page.title}</h1>
+                    </Jumbotron>
+                    <Safe.div className={clanPageCss.pageContent}>
+                        {page.html}
+                    </Safe.div>
                 </Tab.Pane>
             );
         });

@@ -1,5 +1,8 @@
 import markdownToHtml from '../lib/markdownToHtml';
 
+const CLAN_API_PROTOCOL = 'https';
+const CLAN_API_BASE_URL = 'l33t.xyz';
+
 export async function getClanPageServerSideProps(context) {
     let result = null;
 
@@ -44,7 +47,9 @@ export function getClanFromHostnameOrPath(hostname, path) {
 export async function fetchClanSite(clanName) {
     let site;
 
-    const res = await fetch(`https://l33t.xyz/api/clans/${clanName}/public`);
+    const res = await fetch(
+        `${CLAN_API_PROTOCOL}://${CLAN_API_BASE_URL}/api/clans/${clanName}/public`
+    );
     const data = await res.json();
 
     if (!data || !data.success) {

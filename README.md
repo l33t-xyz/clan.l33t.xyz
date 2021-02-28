@@ -13,8 +13,8 @@ Instructions coming soon. For now, if you are interested, please shoot an email 
 # Architecture
 
 - Live website: <https://clan.l33t.xyz> (Fallback: <http://clan-l33t-xyz.vercel.app>)
-- Hosting is provided by Vercel (from the [l33t-xyz-bot mirror/fork](https://github.com/l33t-xyz-bot/clan.l33t.xyz))
-- Airtable serves as the database
+- Hosting is provided by [Vercel](https://vercel.com) (from the [l33t-xyz-bot mirror/fork](https://github.com/l33t-xyz-bot/clan.l33t.xyz))
+- [Airtable](https://airtable.com) serves as the database, with content entered as [Markdown](https://en.wikipedia.org/wiki/Markdown)
 - Custom code for proxying/rendering from <https://l33t.xyz>
 
 # Local Development

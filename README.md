@@ -8,7 +8,7 @@ The list of gaming clan websites hosted on `clan.l33t.xyz` is growing. The first
 
 # Host Your Clan Website on `clan.l33t.xyz`
 
-Instructions coming soon. For now, if you are interested, please shoot an email to <hello@l33t.xyz>, or in Aardwolf, send a tell to `Ruhamah`.
+Instructions coming soon. For now, if you are interested, please shoot an email to <clan@l33t.xyz>, or in Aardwolf, send a tell to `Ruhamah`.
 
 # Architecture
 

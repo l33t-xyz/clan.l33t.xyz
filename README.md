@@ -1,13 +1,21 @@
 # clan.l33t.xyz
 
-NextJS-based frontend app for gaming clan pages hosted on <l33t.xyz>
+NextJS-based frontend app for gaming clan websites hosted on <https://l33t.xyz>
+
+# Clans on `clan.l33t.xyz`
+
+The list of gaming clan websites hosted on `clan.l33t.xyz` is growing. The first one is [Clan Amazon](https://amazon.clan.l33t.xyz), which is maintained by the creator of `l33t-xyz`.
+
+# Host Your Clan Website on `clan.l33t.xyz`
+
+Instructions coming soon. For now, if you are interested, please shoot an email to <hello@l33t.xyz>, or in Aardwolf, send a tell to `Ruhamah`.
 
 # Architecture
 
 - Live website: <https://clan.l33t.xyz> (Fallback: <http://clan-l33t-xyz.vercel.app>)
-- Hosting is provided by Vercel.
-- Airtable as the database
-- Custom code for proxying/rendering 
+- Hosting is provided by Vercel (from the [l33t-xyz-bot mirror/fork](https://github.com/l33t-xyz-bot/clan.l33t.xyz))
+- Airtable serves as the database
+- Custom code for proxying/rendering from <https://l33t.xyz>
 
 # Local Development
 

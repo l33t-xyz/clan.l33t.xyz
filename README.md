@@ -1,6 +1,6 @@
 # clan.l33t.xyz
 
-NextJS-based frontend app for gaming clan websites hosted on <https://l33t.xyz>
+Free, flexible, and robust gaming clan websites built on a convenient CMS powered by NextJS, Airtable, GitHub, and Vercel.
 
 # Clans on `clan.l33t.xyz`
 

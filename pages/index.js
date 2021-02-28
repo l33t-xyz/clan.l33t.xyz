@@ -36,6 +36,7 @@ class IndexPage extends React.Component {
         const tabPanesJSX = site.public_pages.map((page, index) => {
             return (
                 <Tab.Pane eventKey={page.slug} key={page.slug}>
+                    <h1>{page.title}</h1>
                     <Safe.div>{page.html}</Safe.div>
                 </Tab.Pane>
             );

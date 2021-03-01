@@ -11,16 +11,59 @@ body {
     box-sizing: border-box;
 }
 
-// TODO: place into themed files
-body {
+.jumbotron {
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 400px;
+    max-height: 400px;
+}
+
+.page-title {
+    font-size: 3rem;
+    color: #222;
+    font-weight: bold;
+}
+
+.page-content {
+    padding: 0px 20px;
+}
+
+body.theme-default {
+    .page-title {
+        text-shadow: 5px 2px 15px #fff;
+    }
+}
+
+body.theme-dark-forest {
+    background-color: #031903;
+    color: #eee;
+
+    .page-title {
+        text-shadow: 5px 2px 15px #cfc;
+    }
+
+    code {
+        color: #0f0;
+    }
+
+    pre {
+        color: #0f0;
+    }
+}
+
+body.theme-dark-steel-blue {
     background-color: #0a1c27;
     color: #eee;
-}
 
-code {
-    color: #0f0;
-}
+    .page-title {
+        text-shadow: 5px 2px 15px #ccf;
+    }
 
-pre {
-    color: #0f0;
+    code {
+        color: #0f0;
+    }
+
+    pre {
+        color: #0f0;
+    }
 }

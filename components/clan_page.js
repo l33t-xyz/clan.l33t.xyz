@@ -4,9 +4,6 @@ import MDX from '@mdx-js/runtime';
 
 import BasePage from './base_page';
 
-import css from '../styles/common.module.scss';
-import clanPageCss from '../styles/clan.module.scss';
-
 import { getClanPageServerSideProps } from '../utils/clan';
 
 class ClanPage extends React.Component {
@@ -52,25 +49,21 @@ class ClanPage extends React.Component {
             }
 
             const pageContentJSX = (
-                <div className={clanPageCss.pageContent}>
+                <div className="page-content">
                     <MDX>{page.content || ''}</MDX>
                 </div>
             );
 
             // const pageContentJSX = (
-            //     <Safe.div className={clanPageCss.pageContent}>
+            //     <Safe.div className="page-content">
             //         {page.html}
             //     </Safe.div>
             // );
 
             return (
                 <Tab.Pane eventKey={page.slug} key={page.slug}>
-                    <Jumbotron
-                        fluid
-                        className={clanPageCss.jumbotron}
-                        style={heroStyle}
-                    >
-                        <h1 className={clanPageCss.pageTitle}>{page.title}</h1>
+                    <Jumbotron fluid className="jumbotron" style={heroStyle}>
+                        <h1 className="page-title">{page.title}</h1>
                     </Jumbotron>
                     {pageContentJSX}
                 </Tab.Pane>

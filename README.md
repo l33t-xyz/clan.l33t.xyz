@@ -12,6 +12,10 @@ Get a fully customizable clan website up and running in 10 minutes!
 
 Instructions coming soon. For now, if you are interested, please shoot an email to <clan@l33t.xyz>, or in Aardwolf, send a tell to `Ruhamah`.
 
+# Customization
+
+The site will eventually be fully customizable. Currently, the customizations are around hero (header) images, and themes (current choices are: `default`, `dark-forest`, and `dark-steel-blue`).
+
 # Architecture
 
 - Live website: <https://clan.l33t.xyz> (Fallback: <http://clan-l33t-xyz.vercel.app>)

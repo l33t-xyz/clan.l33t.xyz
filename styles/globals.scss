@@ -34,6 +34,23 @@ body.theme-default {
     }
 }
 
+body.theme-dark-inferno {
+    background-color: #380404;
+    color: #eee;
+
+    .page-title {
+        text-shadow: 5px 2px 15px #ff9090;
+    }
+
+    code {
+        color: #0f0;
+    }
+
+    pre {
+        color: #0f0;
+    }
+}
+
 body.theme-dark-forest {
     background-color: #031903;
     color: #eee;
@@ -57,6 +74,40 @@ body.theme-dark-steel-blue {
 
     .page-title {
         text-shadow: 5px 2px 15px #ccf;
+    }
+
+    code {
+        color: #0f0;
+    }
+
+    pre {
+        color: #0f0;
+    }
+}
+
+body.theme-dark-amethyst {
+    background-color: #2d0f2d;
+    color: #eee;
+
+    .page-title {
+        text-shadow: 5px 2px 15px #ff90ff;
+    }
+
+    code {
+        color: #0f0;
+    }
+
+    pre {
+        color: #0f0;
+    }
+}
+
+body.theme-dark-bronze {
+    background-color: #271707;
+    color: #eee;
+
+    .page-title {
+        text-shadow: 5px 2px 15px #ffae47;
     }
 
     code {

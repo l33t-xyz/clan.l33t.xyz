@@ -2,9 +2,10 @@ import { useEffect } from 'react';
 
 function Layout(props) {
     useEffect(() => {
-        const site = props.children.props.site;
-        const siteSettings = site.meta.settings;
-        const theme = siteSettings.theme; // default, dark-forest, dark-steel-blue
+        const site = props.children.props.site || {};
+        const siteMeta = site.meta || {};
+        const siteSettings = siteMeta.settings || {};
+        const theme = siteSettings.theme || 'default';
         document.querySelector('body').classList.add(`theme-${theme}`);
     });
 

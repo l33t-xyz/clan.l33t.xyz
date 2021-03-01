@@ -14,7 +14,7 @@ Instructions coming soon. For now, if you are interested, please shoot an email 
 
 # Customization
 
-The site will eventually be fully customizable. Currently, the customizations are around hero (header) images, and themes (current choices are: `default`, `dark-forest`, and `dark-steel-blue`).
+While eventually, the site will be fully customizable, currently, the customizations are around hero (header) images, and color themes. The current color theme choices are: `default`, `dark-inferno`, `dark-forest`, `dark-steel-blue`, `dark-amethyst`, and `dark-bronze`.
 
 # Architecture
 

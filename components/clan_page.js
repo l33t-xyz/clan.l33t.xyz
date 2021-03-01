@@ -14,6 +14,11 @@ class ClanPage extends React.Component {
         };
     }
 
+    componentDidUpdate() {
+        // https://github.com/l33t-xyz/xterm.js
+        formatXtermWidgets();
+    }
+
     render() {
         const site = this.props.page.props.site;
 

@@ -1,4 +1,4 @@
-import markdownToHtml from '../lib/markdownToHtml';
+import { markdownToHtml } from './markdown';
 
 const CLAN_API_PROTOCOL = 'https';
 const CLAN_API_BASE_URL = 'l33t.xyz';

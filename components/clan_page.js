@@ -1,5 +1,6 @@
 import { Col, Nav, Navbar, Row, Tab, Jumbotron } from 'react-bootstrap';
 import Safe from 'react-safe';
+import MDX from '@mdx-js/runtime';
 
 import BasePage from './base_page';
 
@@ -49,6 +50,19 @@ class ClanPage extends React.Component {
                 heroStyle.backgroundPosition = 'center';
                 heroStyle.backgroundSize = 'cover';
             }
+
+            const pageContentJSX = (
+                <div className={clanPageCss.pageContent}>
+                    <MDX>{page.content || ''}</MDX>
+                </div>
+            );
+
+            // const pageContentJSX = (
+            //     <Safe.div className={clanPageCss.pageContent}>
+            //         {page.html}
+            //     </Safe.div>
+            // );
+
             return (
                 <Tab.Pane eventKey={page.slug} key={page.slug}>
                     <Jumbotron
@@ -58,9 +72,7 @@ class ClanPage extends React.Component {
                     >
                         <h1 className={clanPageCss.pageTitle}>{page.title}</h1>
                     </Jumbotron>
-                    <Safe.div className={clanPageCss.pageContent}>
-                        {page.html}
-                    </Safe.div>
+                    {pageContentJSX}
                 </Tab.Pane>
             );
         });

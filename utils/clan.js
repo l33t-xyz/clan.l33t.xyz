@@ -57,11 +57,13 @@ export async function fetchClanSite(clanName) {
     } else {
         site = data.site;
 
-        for (let i = 0; i < site.public_pages.length; ++i) {
-            const page = site.public_pages[i];
-            const html = await markdownToHtml(page.content || '');
-            page.html = html;
-        }
+        // convert Markdown to HTML
+        // for (let i = 0; i < site.public_pages.length; ++i) {
+        //     const page = site.public_pages[i];
+        //     const content = page.content || '';
+        //     const html = await markdownToHtml(content);
+        //     page.html = html;
+        // }
     }
     return site;
 }

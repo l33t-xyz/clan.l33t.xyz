@@ -4,7 +4,9 @@ Free, flexible, and robust gaming clan websites built on a convenient CMS powere
 
 # Clans on `clan.l33t.xyz`
 
-The list of gaming clan websites hosted on `clan.l33t.xyz` is growing. The first one is [Clan Amazon](https://amazon.clan.l33t.xyz), which is maintained by the creator of `l33t-xyz`.
+The [list of gaming clan websites](https://github.com/l33t-xyz/clan.l33t.xyz/wiki/Clans) hosted on `clan.l33t.xyz` is growing. The first one is [Clan Amazon](https://amazon.clan.l33t.xyz), which is maintained by the creator of `l33t-xyz`.
+
+See the [list of clans on the wiki](https://github.com/l33t-xyz/clan.l33t.xyz/wiki/Clans).
 
 # Host Your Clan Website on `clan.l33t.xyz`
 

@@ -41,7 +41,9 @@ Check out the [official wiki](https://github.com/l33t-xyz/clan.l33t.xyz/wiki) an
 
 # License
 
-MIT License. See `LICENSE.md`
+Code: MIT License. See `LICENSE.md`
+
+Wiki, README, and other documentation: <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
 # Contributing
 

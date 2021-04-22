@@ -33,6 +33,10 @@ To develop locally, perform the following steps:
   1. Modify hosts file (i.e. `/etc/hosts`) and point `yourclan.clan.l33t.xyz` to `127.0.0.1`, then, in your browser, navigate to `http://<yourclan>.clan.l33t.xyz:3000`
   1. Alternately, without editing the hosts file, in your browser, navigate to `http://localhost:3000/<yourclan>`. However, with this method, not all routing may work correctly
 
+# Need more help?
+
+Check out the [official wiki](https://github.com/l33t-xyz/clan.l33t.xyz/wiki) and the [FAQ](https://github.com/l33t-xyz/clan.l33t.xyz/wiki/FAQ)
+
 # License
 
 MIT License. See `LICENSE.md`

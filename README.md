@@ -35,7 +35,7 @@ To develop locally, perform the following steps:
 
 # Need more help?
 
-Check out the [official wiki](https://github.com/l33t-xyz/clan.l33t.xyz/wiki) and the [FAQ](https://github.com/l33t-xyz/clan.l33t.xyz/wiki/FAQ)
+Check out the [official wiki](https://github.com/l33t-xyz/clan.l33t.xyz/wiki) and the [FAQ](https://github.com/l33t-xyz/clan.l33t.xyz/wiki/FAQ).
 
 # License
 

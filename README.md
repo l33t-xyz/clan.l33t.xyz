@@ -12,7 +12,7 @@ See the [list of clans on the wiki](https://github.com/l33t-xyz/clan.l33t.xyz/wi
 
 Get a fully customizable clan website up and running in 10 minutes!
 
-Instructions coming soon. For now, if you are interested, please shoot an email to <clan@l33t.xyz>, or in Aardwolf, send a tell to `Ruhamah`.
+See: [Get Started](https://github.com/l33t-xyz/clan.l33t.xyz/wiki/Get-Started) on the [wiki](https://github.com/l33t-xyz/clan.l33t.xyz/wiki).
 
 # Customization
 

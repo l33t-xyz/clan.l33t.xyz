@@ -1,6 +1,5 @@
 // next.config.js
 // https://nextjs.org/docs/api-reference/next.config.js/introduction
-// https://github.com/vercel/next.js/blob/canary/packages/next/next-server/server/config.ts
 
 // https://mdxjs.com/getting-started/next
 
@@ -12,13 +11,17 @@ const withMDX = require('@next/mdx')({
     },
 });
 
-module.exports = withMDX({
-    basePath: '',
+const nextConfig = {
     pageExtensions: ['js', 'jsx', 'md', 'mdx'],
-    webpack: (config, options) => {
-        config.node = {
-            fs: 'empty',
-        };
+    webpack: (config, { isServer }) => {
+        if (!isServer) {
+            // Fallbacks for Node.js modules required by MDX
+            config.resolve.fallback = {
+                fs: false,
+            };
+        }
         return config;
     },
-});
+};
+
+module.exports = withMDX(nextConfig);

@@ -1,4 +1,5 @@
 import { Col, Nav, Navbar, Row, Tab, Jumbotron } from 'react-bootstrap';
+import React from 'react';
 import Safe from 'react-safe';
 import MDX from '@mdx-js/runtime';
 

@@ -1,3 +1,5 @@
+import React from 'react';
+
 import BasePage from '../components/base_page';
 import ClanPage from '../components/clan_page';
 

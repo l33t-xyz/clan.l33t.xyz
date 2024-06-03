@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-function Layout(props) {
+export function Layout(props) {
     useEffect(() => {
         const site = props.children.props.site || {};
         const siteMeta = site.meta || {};
@@ -22,5 +22,3 @@ function Layout(props) {
         </div>
     );
 }
-
-export default Layout;

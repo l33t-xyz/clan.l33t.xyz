@@ -1,6 +1,6 @@
 import css from '../styles/footer.module.scss';
 
-function Footer({ children, ...props }) {
+export function Footer({ children, ...props }) {
     return (
         <footer className={css.footer}>
             <span>
@@ -14,5 +14,3 @@ function Footer({ children, ...props }) {
         </footer>
     );
 }
-
-export default Footer;

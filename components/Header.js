@@ -1,11 +1,11 @@
-import {Nav, Navbar} from 'react-bootstrap';
+import { Nav, Navbar } from 'react-bootstrap';
 
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import css from '../styles/header.module.scss';
 
-function Header({ children, ...props }) {
+export function Header({ children, ...props }) {
     const router = useRouter();
     return null;
     return (
@@ -26,5 +26,3 @@ function Header({ children, ...props }) {
         </div>
     );
 }
-
-export default Header;

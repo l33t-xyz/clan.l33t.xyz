@@ -1,6 +1,6 @@
 import React from 'react';
 import App from 'next/app';
-import Layout from '../components/layout';
+import { Layout } from '@components/Layout';
 
 import css from '../styles/globals.scss';
 

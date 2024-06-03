@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import React from 'react';
 
-import Header from '@components/header';
-import Footer from '@components/footer';
+import { Header } from '@components/Header';
+import { Footer } from '@components/Footer';
 import CommonCSS from '@components/css/common';
 import CommonJS from '@components/js/common';
 import NonBlockingJS from '@components/js/nonblocking';

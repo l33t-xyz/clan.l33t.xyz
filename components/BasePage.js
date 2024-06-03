@@ -1,14 +1,14 @@
 import Head from 'next/head';
 import React from 'react';
 
-import Header from '../components/header';
-import Footer from '../components/footer';
-import CommonCSS from '../components/css/common';
-import CommonJS from '../components/js/common';
-import NonBlockingJS from '../components/js/nonblocking';
+import Header from '@components/header';
+import Footer from '@components/footer';
+import CommonCSS from '@components/css/common';
+import CommonJS from '@components/js/common';
+import NonBlockingJS from '@components/js/nonblocking';
 
-import css from '../styles/common.module.scss';
-import utilsCss from '../styles/utils.module.scss';
+import css from '@styles/common.module.scss';
+import utilsCss from '@styles/utils.module.scss';
 
 function BasePage(WrappedComponent) {
     return class extends React.Component {

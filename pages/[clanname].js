@@ -1,15 +1,11 @@
-import React from 'react';
+import BasePage from '@components/BasePage';
+import ClanPage from '@components/ClanPage';
 
-import BasePage from '../components/base_page';
-import ClanPage from '../components/clan_page';
+import { getClanPageServerSideProps } from '@utils/clan';
 
-import { getClanPageServerSideProps } from '../utils/clan';
-
-class LocalClanPage extends React.Component {
-    render() {
-        return <ClanPage page={this.props.page} />;
-    }
-}
+const LocalClanPage = ({ page }) => {
+    return <ClanPage page={page} />;
+};
 
 export async function getServerSideProps(context) {
     const result = await getClanPageServerSideProps(context);

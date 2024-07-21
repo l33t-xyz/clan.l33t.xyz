@@ -18,7 +18,7 @@
     "eslint-config-next": "^14.2.3",
     "jquery": "^3.5.1",
     "less": "^3.12.2",
-    "next": "^14.2.3",
+    "next": "^14.2.5",
     "node-fetch": "^2.6.1",
     "object-path": "^0.11.5",
     "popper.js": "^1.16.1",

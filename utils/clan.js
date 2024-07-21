@@ -10,12 +10,12 @@ export async function getClanPageServerSideProps(context) {
         notFound: true,
     };
 
-    const hostname = context.req.headers.host;
+    const { cookie, host } = context.req.headers;
     const path = context.resolvedUrl;
-    const clanName = getClanFromHostnameOrPath(hostname, path);
+    const clanName = getClanFromHostnameOrPath(host, path);
 
     if (clanName) {
-        const site = await fetchClanSite(clanName);
+        const site = await fetchClanSite(clanName, cookie);
         result = {
             props: { site },
         };
@@ -26,13 +26,13 @@ export async function getClanPageServerSideProps(context) {
     return result;
 }
 
-export function getClanFromHostnameOrPath(hostname, path) {
+export function getClanFromHostnameOrPath(host, path) {
     let clanName = null;
 
-    const clanHostnameMatch = hostname.match(
+    const clanHostnameMatch = host.match(
         /^(?<clanName>[a-z]+)\.(dev\.)?clan\.l33t\.xyz(:\d+)?$/
     );
-    const localHostnameMatch = hostname.match(/^localhost:\d+$/);
+    const localHostnameMatch = host.match(/^localhost:\d+$/);
 
     if (clanHostnameMatch) {
         clanName = clanHostnameMatch.groups.clanName;
@@ -44,11 +44,17 @@ export function getClanFromHostnameOrPath(hostname, path) {
     return clanName;
 }
 
-export async function fetchClanSite(clanName) {
+export async function fetchClanSite(clanName, cookie) {
     let site;
 
     const res = await fetch(
-        `${CLAN_API_PROTOCOL}://${CLAN_API_BASE_URL}/api/clans/${clanName}/public`
+        `${CLAN_API_PROTOCOL}://jontsai.dev.${CLAN_API_BASE_URL}/api/clans/${clanName}/public`,
+        {
+            credentials: 'include',
+            headers: {
+                cookie,
+            },
+        }
     );
     const data = await res.json();
 

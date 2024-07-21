@@ -50,11 +50,21 @@ const ClanPage = ({ page }) => {
             heroStyle.backgroundSize = 'cover';
         }
 
-        const pageContentJSX = (
-            <div className="page-content">
-                <MDX>{page.content || ''}</MDX>
-            </div>
-        );
+        let pageContentJSX = null;
+
+        if (page.slug === 'members') {
+            const loginStatus = site.member
+                ? `Welcome back, ${site.member.name}!`
+                : 'You are not logged in.';
+
+            pageContentJSX = <div className="page-content">{loginStatus}</div>;
+        } else {
+            pageContentJSX = (
+                <div className="page-content">
+                    <MDX>{page.content || ''}</MDX>
+                </div>
+            );
+        }
 
         // const pageContentJSX = (
         //     <Safe.div className="page-content">

@@ -30,7 +30,7 @@ export function getClanFromHostnameOrPath(hostname, path) {
     let clanName = null;
 
     const clanHostnameMatch = hostname.match(
-        /^(?<clanName>[a-z]+)\.clan\.l33t\.xyz$/
+        /^(?<clanName>[a-z]+)\.(dev\.)?clan\.l33t\.xyz(:\d+)?$/
     );
     const localHostnameMatch = hostname.match(/^localhost:\d+$/);
 

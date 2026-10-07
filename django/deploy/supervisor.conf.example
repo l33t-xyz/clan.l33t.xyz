@@ -1,0 +1,12 @@
+; Review-only template. Dedicated new process; do not alter the legacy app group.
+[program:clan-builder-preview]
+directory=/srv/clan-builder/django
+command=/srv/clan-builder/.venv/bin/gunicorn -c deploy/gunicorn.conf.py clan_project.wsgi
+user=clan-builder
+environment=CLAN_RUNTIME_FILE="/etc/clan-builder/runtime.py",CLAN_PORT="18461"
+autostart=false
+autorestart=true
+stopasgroup=true
+killasgroup=true
+stdout_logfile=/var/log/clan-builder/preview.stdout.log
+stderr_logfile=/var/log/clan-builder/preview.stderr.log

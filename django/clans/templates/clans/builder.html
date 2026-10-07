@@ -1,0 +1,48 @@
+{% extends "clans/shell.html" %}
+{% block workspace %}
+    <div class="page-heading">
+        <div>
+            <div class="eyebrow">A LITTLE HELP. CLEAR BOUNDARIES.</div>
+            <h1>Your Discord builder.</h1>
+            <p>A helper for this website. Never a doorway into somebody else's.</p>
+        </div>
+    </div>
+    <section class="welcome-panel">
+        <div>
+            <h2>Keep building where you hang out.</h2>
+            <p>Connect one trusted Discord channel to this website. Your helper can read pages and prepare drafts; publishing stays with your human editors.</p>
+        </div>
+        <span class="big-spark">✦</span>
+    </section>
+    <div class="bottom-grid">
+        <section class="panel">
+            <h3>One channel. One website.</h3>
+            <p>Requests are checked against the bound server, channel, Discord identity, and current website membership.</p>
+            <h3>Drafts, not surprises.</h3>
+            <p>The builder cannot publish, change your plan, invite users, or access another website.</p>
+        </section>
+        <section class="panel">
+            <h3>Connection status</h3>
+            {% for b in bindings %}
+                <p>Connected channel: {{ b.channel_id }}</p>
+            {% empty %}
+                <p class="status">○ Not connected yet</p>
+                <p>Ask the operator to connect your clan's Discord channel. There are no tokens to paste into chat.</p>
+            {% endfor %}
+            <h3>Authorized builder connections</h3>
+            {% for g in grants %}
+                <p>{% if g.revoked_at %}Revoked{% else %}Expires {{ g.expires_at|date:'M j, Y' }}{% endif %}</p>
+                {% if is_owner and not g.revoked_at %}
+                    <form method="post">
+                        {% csrf_token %}
+                        <button name="revoke"
+                                value="{{ g.pk }}"
+                                class="button secondary small">Revoke connection</button>
+                    </form>
+                {% endif %}
+            {% empty %}
+                <p>No active connections.</p>
+            {% endfor %}
+        </section>
+    </div>
+{% endblock %}

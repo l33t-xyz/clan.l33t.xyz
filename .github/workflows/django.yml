@@ -1,0 +1,37 @@
+name: Django clan builder
+on:
+  pull_request:
+    paths: ['django/**', '.github/workflows/django.yml']
+  push:
+    branches: ['feat/django-clan-builder']
+    paths: ['django/**', '.github/workflows/django.yml']
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+          MYSQL_DATABASE: clan_builder
+        ports: ['53316:3306']
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1"
+          --health-interval=10s --health-timeout=5s --health-retries=10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r django/requirements.txt -r django/requirements-builder.txt -r django/requirements-browser.txt
+      - run: python django/manage.py check
+      - run: python django/manage.py makemigrations --check --dry-run
+      - run: python django/manage.py test clans --noinput
+      - run: python django/manage.py collectstatic --noinput
+      - run: python -m playwright install --with-deps chromium
+      - run: |
+          python django/manage.py migrate --noinput
+          gunicorn --chdir django clan_project.wsgi --bind 127.0.0.1:18461 --daemon
+          python django/scripts/test_browser.py

@@ -1,0 +1,29 @@
+{% extends "clans/shell.html" %}
+{% load static %}
+{% block workspace %}
+    <div class="page-heading">
+        <div>
+            <div class="eyebrow">THE MOMENTS WORTH KEEPING</div>
+            <h1>Your image library.</h1>
+            <p>For this website only. Add images from any page's editor.</p>
+        </div>
+    </div>
+    <div class="asset-grid">
+        {% for a in assets %}
+            <article class="asset-card">
+                <img src="{{ a.get_absolute_url }}" alt="{{ a.name }}">
+                <div>
+                    <b>{{ a.name }}</b>
+                    <small>{{ a.size_bytes|filesizeformat }}</small>
+                </div>
+            </article>
+        {% empty %}
+            <div class="empty">
+                <span>▧</span>
+                <h2>Make room for memories.</h2>
+                <p>Open a page and choose “Add an image” to get started.</p>
+                <a class="button" href="{% url 'dashboard' site.slug %}">Go to your pages</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

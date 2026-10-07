@@ -1,0 +1,36 @@
+{% extends "clans/base.html" %}
+{% block body %}
+    <main class="container">
+        <div class="page-heading">
+            <div>
+                <div class="eyebrow">YOUR CORNER OF THE INTERNET</div>
+                <h1>Welcome home.</h1>
+                <p>Good things happen when your people have a place.</p>
+            </div>
+            <a class="button" href="{% url 'new_site' %}">+ New website</a>
+        </div>
+        <div class="site-grid">
+            {% for m in memberships %}
+                <a class="site-card theme-{{ m.site.theme }}"
+                   href="{% url 'dashboard' m.site.slug %}">
+                    <div class="card-art">
+                        <span>◈</span>
+                    </div>
+                    <div class="card-copy">
+                        <span class="eyebrow">{{ m.role }} · {{ m.site.get_plan_display }}</span>
+                        <h2>{{ m.site.name }}</h2>
+                        <p>{{ m.site.tagline|default:'Your next chapter is waiting.' }}</p>
+                        <span class="arrow">Open studio ↗</span>
+                    </div>
+                </a>
+            {% empty %}
+                <div class="empty">
+                    <span>◈</span>
+                    <h2>A home is waiting to happen.</h2>
+                    <p>Pick a name. We'll take care of the blank page.</p>
+                    <a class="button" href="{% url 'new_site' %}">Create your first website ↗</a>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+{% endblock %}

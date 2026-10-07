@@ -1,0 +1,2 @@
+# Optional isolated-agent bridge; not required by the web service.
+mcp>=2.3,<3

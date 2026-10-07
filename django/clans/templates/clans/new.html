@@ -1,0 +1,22 @@
+{% extends "clans/base.html" %}
+{% block body %}
+    <main class="narrow">
+        <a class="back" href="{% url 'studio' %}">← My websites</a>
+        <div class="eyebrow">A FEW WORDS. A FRESH START.</div>
+        <h1>
+            Make yourselves
+            <br>
+            at <em>home.</em>
+        </h1>
+        <form method="post" class="form-stack">
+            {% csrf_token %}{{ form.non_field_errors }}{% for field in form %}
+            <div>
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{{ field.errors }}{% if field.name == "slug" %}
+                <small>Lowercase letters, numbers and hyphens. This address stays with your site.</small>
+{% endif %}
+</div>
+{% endfor %}
+<button class="button">Create website ↗</button>
+</form>
+</main>
+{% endblock %}

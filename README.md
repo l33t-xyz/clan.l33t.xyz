@@ -1,5 +1,9 @@
 # clan.l33t.xyz
 
+## Django replacement (in development)
+
+The new Discord-first, MySQL-backed clan studio lives in [`django/`](django/README.md). It adds visual editing, draft/publish workflows and tenant-scoped builder access. The existing Next.js source below is preserved for migration reference; this branch does not switch any live site.
+
 Free, flexible, and robust gaming clan websites built on a convenient CMS powered by NextJS, Airtable, GitHub, and Vercel.
 
 # Clans on `clan.l33t.xyz`

@@ -1,0 +1,63 @@
+{% extends "clans/base.html" %}
+{% block title %}{{ title }} · {{ site.name }}{% endblock %}
+{% block body %}
+    <main class="public-site theme-{{ site.theme }}">
+        {% if draft_preview %}
+            <div class="draft-banner">PRIVATE DRAFT PREVIEW — only your website's editors can see this. <a href="{% url 'edit' site.slug page.pk %}">Back to editing ↗</a>
+            </div>
+        {% endif %}
+        <header class="clan-nav">
+            <a href="{{ site.get_absolute_url }}">◈ {{ site.name }}</a>
+            <nav aria-label="Clan pages">
+                {% for p in pages %}
+                    <a {% if p.pk == page.pk %}aria-current="page"{% endif %}
+                       href="{% if draft_preview %}
+{% url 'preview' site.slug p.slug %}
+{% else %}
+{% url 'public_page' site.slug p.slug %}
+{% endif %}">{% if draft_preview %}{{ p.title }}{% else %}{{ p.published_title }}{% endif %}</a>
+                {% endfor %}
+            </nav>
+        </header>
+        <section class="clan-hero">
+            {% if site.hero %}
+                <img class="cover-image"
+                     src="{{ site.hero.get_absolute_url }}"
+                     alt="{{ site.name }} cover">
+            {% else %}
+                <div class="public-arena" aria-hidden="true">
+                    <div class="arena-grid"></div>
+                    {% include "clans/emblem.html" %}
+                </div>
+            {% endif %}
+            <div class="clan-hero-copy">
+                <div class="eyebrow">{{ site.game|default:'GOOD PEOPLE. SHARED ADVENTURES.' }}</div>
+                <h1>{{ site.name }}</h1>
+                <p>{{ site.tagline }}</p>
+                {% if site.invite_url %}
+                    <a class="button light"
+                       href="{{ site.invite_url }}"
+                       rel="noopener noreferrer">Join us on Discord ↗</a>
+                {% endif %}
+            </div>
+        </section>
+        <div class="public-columns">
+            <article class="prose">
+                <div class="eyebrow">{{ title }}</div>
+            {{ content|safe }}</article>
+            <aside class="community-card">
+                <span>◈</span>
+                <h3>A place to belong.</h3>
+                <p>{{ site.tagline|default:'Stories, adventures, and the people who make them worth it.' }}</p>
+                {% if site.invite_url %}
+                    <a href="{{ site.invite_url }}" rel="noopener noreferrer">Meet the community ↗</a>
+                {% endif %}
+                {% if site.donation_url %}
+                    <a class="donation"
+                       href="{{ site.donation_url }}"
+                       rel="noopener noreferrer">Support our community ↗</a>
+                {% endif %}
+            </aside>
+        </div>
+    </main>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "clans/shell.html" %}
+{% block workspace %}
+    <div class="page-heading">
+        <div>
+            <div class="eyebrow">GOOD THINGS ARE A TEAM EFFORT</div>
+            <h1>Your trusted people.</h1>
+            <p>Editors can draft and publish. Only you can change settings and manage access.</p>
+        </div>
+    </div>
+    {% if error %}
+        <p class="error" role="alert">{{ error }}</p>
+    {% endif %}
+    <div class="page-list">
+        {% for m in members %}
+            <div class="page-row">
+                <span class="page-icon">♧</span>
+                <div class="page-row-title">
+                    <b>{{ m.user.first_name|default:m.user.username }}</b>
+                    <small>{{ m.role }}</small>
+                </div>
+                {% if m.role == "editor" %}
+                    <form method="post">
+                        {% csrf_token %}
+                        <button name="remove" value="{{ m.pk }}" class="button secondary small">Remove editor</button>
+                    </form>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    <form method="post" class="panel form-stack">
+        {% csrf_token %}
+        <h2>Invite a helping hand.</h2>
+        <p>Ask them to sign in here with Discord first. Then enter their Discord user ID—not their display name.</p>
+        <label for="discord-id">Discord user ID</label>
+        <input id="discord-id" name="discord_id" pattern="[0-9]{1,24}" required>
+        <button class="button">Add editor</button>
+    </form>
+{% endblock %}

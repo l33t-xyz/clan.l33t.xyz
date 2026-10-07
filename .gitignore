@@ -32,3 +32,12 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# Django local runtime
+.venv/
+__pycache__/
+*.pyc
+*.sqlite3
+django/staticfiles/
+.env
+verification/local/

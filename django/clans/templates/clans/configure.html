@@ -1,0 +1,76 @@
+{% extends "clans/shell.html" %}
+{% block workspace %}
+    <div class="page-heading">
+        <div>
+            <div class="eyebrow">YOUR NAME ON THE DOOR</div>
+            <h1>Make it feel like you.</h1>
+            <p>These settings update your website immediately.</p>
+        </div>
+    </div>
+    {% if error %}
+        <p role="alert" class="error">{{ error }}</p>
+    {% endif %}
+    <form class="form-stack settings-form" method="post">
+        {% csrf_token %}
+        <label for="name">Website name</label>
+        <input id="name"
+               name="name"
+               value="{{ site.name }}"
+               maxlength="100"
+               required>
+        <label for="tagline">A few words about your people</label>
+        <input id="tagline"
+               name="tagline"
+               value="{{ site.tagline }}"
+               maxlength="180">
+        <label for="game">Game or community</label>
+        <input id="game" name="game" value="{{ site.game }}" maxlength="80">
+        <fieldset>
+            <legend>Set the mood</legend>
+            <div class="theme-options">
+                <label class="swatch forest">
+                <input type="radio"
+                       name="theme"
+                       value="forest"
+                       {% if site.theme == 'forest' %}checked{% endif %}> Forest</label>
+                <label class="swatch amethyst">
+                <input type="radio"
+                       name="theme"
+                       value="amethyst"
+                       {% if site.theme == 'amethyst' %}checked{% endif %}> Amethyst</label>
+                <label class="swatch ember">
+                <input type="radio"
+                       name="theme"
+                       value="ember"
+                       {% if site.theme == 'ember' %}checked{% endif %}> Ember</label>
+                <label class="swatch ocean">
+                <input type="radio"
+                       name="theme"
+                       value="ocean"
+                       {% if site.theme == 'ocean' %}checked{% endif %}> Ocean</label>
+            </div>
+        </fieldset>
+        <label for="hero">Cover image</label>
+        <select id="hero" name="hero">
+            <option value="">Use the clan crest</option>
+            {% for a in assets %}
+                <option value="{{ a.pk }}" {% if site.hero_id == a.pk %}selected{% endif %}>{{ a.name }}</option>
+            {% endfor %}
+        </select>
+        <small>A cover image is public immediately.</small>
+        <label for="invite">Discord invite (optional)</label>
+        <input type="url"
+               id="invite"
+               name="invite_url"
+               value="{{ site.invite_url }}"
+               placeholder="https://discord.gg/your-community">
+        <label for="donation">PayPal donation link (optional)</label>
+        <input type="url"
+               id="donation"
+               name="donation_url"
+               value="{{ site.donation_url }}"
+               placeholder="https://paypal.me/your-name">
+        <small>Only set a link you're authorized to collect donations through. We don't process payments.</small>
+        <button class="button">Save website settings</button>
+    </form>
+{% endblock %}

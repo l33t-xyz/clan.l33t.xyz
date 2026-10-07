@@ -1,0 +1,16 @@
+# Review-only template. Replace placeholders; verify actual certs before enabling.
+<VirtualHost *:443>
+    ServerName clan.example.test
+    ServerAlias *.clan.example.test
+    SSLEngine on
+    SSLCertificateFile /etc/letsencrypt/live/clan.example.test/fullchain.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/clan.example.test/privkey.pem
+    ProxyPreserveHost On
+    RequestHeader set X-Forwarded-Proto "https"
+    LimitRequestBody 3145728
+    ProxyPass / http://127.0.0.1:18461/
+    ProxyPassReverse / http://127.0.0.1:18461/
+    # %U excludes query strings containing OAuth codes.
+    CustomLog /var/log/clan-builder/access.log "%a %t %m %U %>s %b"
+    ErrorLog /var/log/clan-builder/error.log
+</VirtualHost>

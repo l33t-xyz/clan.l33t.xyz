@@ -1,0 +1,119 @@
+{% extends "clans/base.html" %}
+{% block body %}
+    <main class="landing">
+        <section class="hero">
+            <div class="hero-copy">
+                <div class="eyebrow">
+                    <span class="dot"></span> BUILT FOR THE PEOPLE YOU QUEUE WITH.
+                </div>
+                <h1>
+                    Squad up.
+                    <br>
+                    <em>Stand out.</em>
+                </h1>
+                <p class="lead">Your clan deserves more than a Discord invite. Put your guides, highlights, and next big adventure in one place. No code required.</p>
+                <div class="actions">
+                    <a href="{% url 'new_site' %}" class="button">Create your clan website <span>↗</span>
+                    </a>
+                    {% if demo_available %}
+                        <form action="{% url 'demo' %}" method="post">
+                            {% csrf_token %}
+                            <button class="button secondary">Try the editor</button>
+                        </form>
+                    {% endif %}
+                </div>
+                <p class="quiet">Free to start. Sign in with Discord. Make it yours.</p>
+                <div class="game-tags" aria-label="For every kind of gaming community">
+                    <span>MMO</span><span>FPS</span><span>CO-OP</span><span>YOUR GAME HERE</span>
+                </div>
+            </div>
+            <div class="hero-art" aria-label="Example of a clan website">
+                <div class="example-site">
+                    <div class="windowbar">
+                        <span>● ● ●</span>
+                        <span>night-owls.clan.l33t.xyz</span>
+                        <span>↗</span>
+                    </div>
+                    <div class="mini-nav">
+                        <b><span class="clan-avatar" aria-hidden="true">NØ</span> NIGHT OWLS</b>
+                        <span class="recruiting-tag">OPEN TO NEW PLAYERS</span>
+                    </div>
+                    <div class="arena">
+                        <div class="arena-grid" aria-hidden="true"></div>
+                        {% include "clans/emblem.html" %}
+                        <span class="arena-label">NO SOLO QUEUES HERE.</span>
+                        <h2>
+                            GOOD GAMES.
+                            <br>
+                            BETTER PEOPLE.
+                        </h2>
+                        <span class="arena-tag">PC + CONSOLE / ALL SKILL LEVELS</span>
+                    </div>
+                    <div class="channel-tabs"
+                         aria-hidden="true"><b>Home</b><span>Guides</span><span>Highlights</span><span>Join us</span></div>
+                    <div class="hub-cards" aria-hidden="true">
+                        <div class="hub-card guide-card"><span>↗</span><small>THE PLAYBOOK</small><b>Ready for the raid.</b></div>
+                        <div class="hub-card highlight-card"><span>▷</span><small>CLAN HIGHLIGHTS</small><b>Worth the replay.</b></div>
+                    </div>
+                </div>
+                <div class="showcase-caption">
+                    <span>SAMPLE CLAN WEBSITE</span>
+                    <b>Your clan could be next ↗</b>
+                </div>
+            </div>
+        </section>
+        <section class="promise-strip">
+            <span>01 <b>Sign in with Discord</b>
+            </span>
+            <span>02 <b>Tell your story</b>
+            </span>
+            <span>03 <b>Make it yours</b>
+            </span>
+        </section>
+        <section class="feature-section">
+            <div class="section-intro">
+                <div class="eyebrow">NO EXTRA SIDE QUESTS.</div>
+                <h2>
+                    All clan.
+                    <br>
+                    No clutter.
+                </h2>
+                <p>
+                    Just the things your community needs.
+                    <br>
+                    Nothing you have to learn a new language for.
+                </p>
+            </div>
+            <div class="feature-grid">
+                <article>
+                    <span class="feature-icon">01 / WRITE</span>
+                    <h3>Write it. See it.</h3>
+                    <p>Headings, links, photos, and stories. Edit the page itself—not a wall of code.</p>
+                </article>
+                <article>
+                    <span class="feature-icon">02 / CONNECT</span>
+                    <h3>Your Discord identity.</h3>
+                    <p>One familiar sign-in. Invite your trusted people to help keep things fresh.</p>
+                </article>
+                <article>
+                    <span class="feature-icon">03 / PUBLISH</span>
+                    <h3>Room to get it right.</h3>
+                    <p>Save a draft, preview it, then publish. Earlier versions are always there.</p>
+                </article>
+                <article>
+                    <span class="feature-icon">04 / BUILD</span>
+                    <h3>A helper with boundaries.</h3>
+                    <p>Connect a builder to your clan's channel. It works on your website, and only yours.</p>
+                </article>
+            </div>
+        </section>
+        <section class="end-card">
+            <div>
+                <div class="eyebrow">READY WHEN YOUR SQUAD IS.</div>
+                <h2>Give your clan a home base.</h2>
+                <p>Free to start. Room to grow when your community does.</p>
+            </div>
+            <a class="button" href="{% url 'new_site' %}">Create your clan website ↗</a>
+        </section>
+    </main>
+{% endblock %}

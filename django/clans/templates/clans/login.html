@@ -1,0 +1,25 @@
+{% extends "clans/base.html" %}
+{% load socialaccount %}
+{% block body %}
+    <main class="narrow signin">
+        <div class="eyebrow">WELCOME TO YOUR NEXT CHAPTER</div>
+        <h1>
+            Your people.
+            <br>
+            Your <em>place.</em>
+        </h1>
+        <p>Use your Discord identity to create and manage your clan's website. No new password to remember.</p>
+        {% if discord_ready %}
+            <form action="{% provider_login_url 'discord' %}" method="post">
+                {% csrf_token %}
+                <button class="button discord">Continue with Discord ↗</button>
+            </form>
+            <p class="quiet">We request your identity only. We don't read your messages.</p>
+        {% else %}
+            <div class="notice">Discord sign-in is being connected for this preview. Public pages are available without an account.</div>
+        {% endif %}
+        {% if preview_mode %}
+            <a href="/">Back to the preview</a>
+        {% endif %}
+    </main>
+{% endblock %}

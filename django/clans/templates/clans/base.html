@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>{% block title %}Clan · A home for your people{% endblock %}</title>
+        {% block head %}{% endblock %}
+        <link rel="stylesheet" href="{% static 'clans/site.css' %}">
+    </head>
+    <body>
+        {% if preview_mode %}
+            <div class="preview-ribbon">
+                EARLY PREVIEW <span>Made for communities. Still taking shape.</span>
+            </div>
+        {% endif %}
+        <header class="topbar">
+            <a class="brand" href="{{ central_origin }}/" aria-label="Clan home">
+                <span class="brand-mark" aria-hidden="true">//</span> clan<span class="brand-domain">/ l33t</span>
+            </a>
+            <nav aria-label="Main navigation">
+                {% if request.user.is_authenticated %}
+                    <a href="{{ central_origin }}{% url 'studio' %}">My websites</a>
+                    <span class="user-name">{{ request.user.first_name|default:request.user.username }}</span>
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button class="text-button">Sign out</button>
+                    </form>
+                {% else %}
+                    <a href="{{ central_origin }}{% url 'login' %}">Sign in</a>
+                    <a class="button small" href="{{ central_origin }}{% url 'new_site' %}">Start a clan <span>↗</span>
+                    </a>
+                {% endif %}
+            </nav>
+        </header>
+        {% if messages %}
+            <div class="messages" role="status">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% block body %}{% endblock %}
+        <footer class="site-footer">
+            <a class="brand" href="{{ central_origin }}/">clan<span class="brand-domain">/ l33t</span>
+            </a>
+            <span>Less setup. More squad.</span>
+            <span>Built for your people.</span>
+        </footer>
+        {% block scripts %}{% endblock %}
+    </body>
+</html>

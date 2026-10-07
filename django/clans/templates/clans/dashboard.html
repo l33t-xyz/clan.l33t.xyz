@@ -1,0 +1,62 @@
+{% extends "clans/shell.html" %}
+{% block workspace %}
+    <div class="page-heading">
+        <div>
+            <div class="eyebrow">MAKE IT FEEL LIKE YOU</div>
+            <h1>Your home base.</h1>
+            <p>A place for the stories that shouldn't get lost in chat.</p>
+        </div>
+        <a class="button" href="{% url 'new_page' site.slug %}">+ Add a page</a>
+    </div>
+    <section class="welcome-panel theme-{{ site.theme }}">
+        <div>
+            <span class="eyebrow">{{ site.game|default:'A COMMUNITY WORTH KEEPING' }}</span>
+            <h2>{{ site.name }}</h2>
+            <p>{{ site.tagline|default:'A fresh page. A shared adventure. Your people.' }}</p>
+            <a href="{% url 'configure' site.slug %}">Make it yours ↗</a>
+        </div>
+        <span class="big-spark">✳</span>
+    </section>
+    <div class="section-heading">
+        <h2>
+            Your pages <span class="count">{{ pages|length }} / {{ site.page_limit }}</span>
+        </h2>
+        <span class="quiet">Draft first. Publish when ready.</span>
+    </div>
+    <div class="page-list">
+        {% for p in pages %}
+            <article class="page-row">
+                <span class="page-icon">▤</span>
+                <div class="page-row-title">
+                    <a href="{% url 'edit' site.slug p.pk %}">{{ p.title }}</a>
+                    <small>/{{ p.slug }} · Edited {{ p.updated_at|timesince }} ago</small>
+                </div>
+                <span class="status {% if p.published_at %}live{% endif %}">
+                    {% if p.published_at %}● Live{% else %}○ Draft{% endif %}
+                </span>
+                <a class="button secondary small" href="{% url 'edit' site.slug p.pk %}">Edit page ↗</a>
+            </article>
+        {% endfor %}
+    </div>
+    <div class="bottom-grid">
+        <section class="panel">
+            <div class="eyebrow">ROOM TO GROW</div>
+            <h3>A little space goes a long way.</h3>
+            <p>{{ used_mb }} MB of {{ limit_mb }} MB used</p>
+            <progress value="{{ used_percent }}" max="100" aria-label="Storage used">
+            </progress>
+            <p class="quiet">Includes images, page content and version history. Need more room? Get in touch—paid plans are coming.</p>
+        </section>
+        <section class="panel">
+            <div class="eyebrow">RECENT ACTIVITY</div>
+            {% for e in events %}
+                <div class="activity">
+                    <span>{{ e.action }}</span>
+                    <small>{{ e.created_at|timesince }} ago</small>
+                </div>
+            {% empty %}
+                <p>Your story starts here.</p>
+            {% endfor %}
+        </section>
+    </div>
+{% endblock %}

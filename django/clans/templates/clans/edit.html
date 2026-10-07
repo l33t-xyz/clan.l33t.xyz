@@ -1,0 +1,99 @@
+{% extends "clans/shell.html" %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'clans/vendor/quill.snow.css' %}">
+{% endblock %}
+{% block workspace %}
+    <div class="page-heading editor-heading">
+        <div>
+            <a class="back" href="{% url 'dashboard' site.slug %}">← Your pages</a>
+            <h1>{% if page %}Make it your own.{% else %}A fresh page.{% endif %}</h1>
+        </div>
+        {% if page %}
+            <a class="button secondary"
+               href="{% url 'preview' site.slug page.slug %}"
+               target="_blank"
+               rel="noopener">Preview ↗</a>
+        {% endif %}
+    </div>
+    <form method="post"
+          id="editor-form"
+          data-upload="{% url 'upload' site.slug %}">
+        {% csrf_token %}{{ form.non_field_errors }}<div class="editor-title">
+        <label for="id_title">Page title</label>{{ form.title }}{{ form.title.errors }}
+        </div>
+        {{ form.html }}{{ form.version }}
+        <div class="editor-note">
+            <span>✎ Draft workspace</span>
+            <span id="save-state" role="status">Your live page stays unchanged until you publish.</span>
+        </div>
+        <div id="rich-editor" aria-label="Page content"></div>
+        <div class="editor-actions">
+            <label class="button secondary" for="image-upload">▧ Add an image</label>
+            <input id="image-upload"
+                   type="file"
+                   accept="image/png,image/jpeg,image/webp,image/gif"
+                   hidden>
+            <button class="button" type="submit">Save draft</button>
+        </div>
+        <p id="upload-status" role="status" class="quiet"></p>
+        <noscript>
+            <p>This visual editor needs JavaScript. Your existing draft has not changed.</p>
+        </noscript>
+    </form>
+    {% if page %}
+        <section class="publish-bar">
+            <div>
+                <h3>Ready for your people?</h3>
+                <p>Publish the last saved draft. Unsaved edits stay in this editor.</p>
+            </div>
+            <form method="post" action="{% url 'publish' site.slug page.pk %}">
+                {% csrf_token %}
+                <input type="hidden" name="version" value="{{ page.version }}">
+                <button class="button" id="publish-button">Publish saved draft ↗</button>
+            </form>
+            {% if page.published_at %}
+                <form method="post" action="{% url 'publish' site.slug page.pk %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="version" value="{{ page.version }}">
+                    <button name="action" value="unpublish" class="text-button">Take offline</button>
+                </form>
+            {% endif %}
+        </section>
+        <details class="history">
+            <summary>
+                ↶ Earlier versions <span class="quiet">Restore without changing the live page</span>
+            </summary>
+            {% for r in history %}
+                <div class="history-row">
+                    <span>Version {{ r.version }} · {{ r.title }}<small>{{ r.created_at|date:'M j, H:i' }} · {{ r.source }}</small>
+                    </span>
+                    <form method="post" action="{% url 'restore' site.slug page.pk r.pk %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="version" value="{{ page.version }}">
+                        <button class="button secondary small">Restore draft</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </details>
+    {% endif %}
+    <details class="history">
+        <summary>▧ Your image library</summary>
+        <div class="asset-grid">
+            {% for a in assets %}
+                <button class="asset-choice"
+                        type="button"
+                        data-insert-image="{{ a.get_absolute_url }}">
+                    <img src="{{ a.get_absolute_url }}" alt="{{ a.name }}">
+                    <span>{{ a.name }}</span>
+                </button>
+            {% empty %}
+                <p>Add your first photo above.</p>
+            {% endfor %}
+        </div>
+    </details>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'clans/vendor/quill.js' %}" defer></script>
+    <script src="{% static 'clans/editor.js' %}" defer></script>
+{% endblock %}

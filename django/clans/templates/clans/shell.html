@@ -1,0 +1,36 @@
+{% extends "clans/base.html" %}
+{% block body %}
+    <div class="studio-layout">
+        <aside class="sidebar">
+            <a href="{% url 'studio' %}" class="back">← All websites</a>
+            <div class="site-monogram theme-{{ site.theme }}">{{ site.name|slice:':1' }}</div>
+            <h2>{{ site.name }}</h2>
+            <span class="plan-badge">{{ site.get_plan_display }} plan</span>
+            <nav aria-label="Website navigation">
+                <a {% if request.resolver_match.url_name == 'dashboard' %}aria-current="page"{% endif %}
+                   href="{% url 'dashboard' site.slug %}">▤ &nbsp; Pages & overview</a>
+                <a {% if request.resolver_match.url_name == 'library' %}aria-current="page"{% endif %}
+                   href="{% url 'library' site.slug %}">▧ &nbsp; Image library</a>
+                <a {% if request.resolver_match.url_name == 'builder' %}aria-current="page"{% endif %}
+                   href="{% url 'builder' site.slug %}">✦ &nbsp; Discord builder</a>
+                {% if site_owner %}
+                    <a {% if request.resolver_match.url_name == 'configure' %}aria-current="page"{% endif %}
+                       href="{% url 'configure' site.slug %}">◉ &nbsp; Website settings</a>
+                    <a {% if request.resolver_match.url_name == 'team' %}aria-current="page"{% endif %}
+                       href="{% url 'team' site.slug %}">♧ &nbsp; Your team</a>
+                {% endif %}
+            </nav>
+            <a class="visit-link"
+               href="{{ site.get_absolute_url }}"
+               target="_blank"
+               rel="noopener">Visit website ↗</a>
+            <div class="sidebar-note">
+                <b>Your clan. Your call.</b>
+                <p>Changes stay private until you publish.</p>
+            </div>
+        </aside>
+        <main class="workspace">
+            {% block workspace %}{% endblock %}
+        </main>
+    </div>
+{% endblock %}
